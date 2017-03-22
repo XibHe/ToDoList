@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>永不</key>
+	<array>
+		<string></string>
+	</array>
+	<key>每年</key>
+	<array>
+		<string>年初</string>
+		<string>年中</string>
+		<string>年末</string>
+	</array>
+	<key>每天</key>
+	<array>
+		<string></string>
+	</array>
+	<key>每月</key>
+	<array>
+		<string>1</string>
+		<string>2</string>
+		<string>3</string>
+		<string>4</string>
+		<string>5</string>
+		<string>6</string>
+		<string>7</string>
+		<string>8</string>
+		<string>9</string>
+		<string>10</string>
+		<string>11</string>
+		<string>12</string>
+		<string>13</string>
+		<string>14</string>
+		<string>15</string>
+		<string>16</string>
+		<string>17</string>
+		<string>18</string>
+		<string>19</string>
+		<string>20</string>
+		<string>21</string>
+		<string>22</string>
+		<string>23</string>
+		<string>24</string>
+		<string>25</string>
+		<string>26</string>
+		<string>27</string>
+		<string>28</string>
+		<string>29</string>
+		<string>30</string>
+		<string>31</string>
+		<string>月末</string>
+	</array>
+	<key>每周</key>
+	<array>
+		<string>周一</string>
+		<string>周二</string>
+		<string>周三</string>
+		<string>周四</string>
+		<string>周五</string>
+		<string>周六</string>
+		<string>周日</string>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,26 @@
+PODS:
+  - DateTools (1.7.0)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - IQKeyboardManager (4.0.7)
+  - Masonry (1.0.2)
+  - SVProgressHUD (2.1.1)
+
+DEPENDENCIES:
+  - DateTools
+  - FMDB
+  - IQKeyboardManager (~> 4.0.0)
+  - Masonry (~> 1.0.2)
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  SVProgressHUD: 1127180503b9a308ddf7006f3cc58fc05cc1092d
+
+PODFILE CHECKSUM: 7eef6318edf2dcfae367e16cd0e6afa939db66e8
+
+COCOAPODS: 1.1.1
