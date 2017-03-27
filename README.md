@@ -12,7 +12,7 @@
 * 设置UILocalNotification对象的repeatInterval属性，即，触发通知的频率
 * 最后使用[[UIApplication sharedApplication] scheduleLocalNotification:myLocalNotification]配置通知
 
-###以频率为永不（只提醒一次）为例，配置UILocalNotification对象，如下
+## 以频率为永不（只提醒一次）为例，配置UILocalNotification对象，如下
 
 ```
 NSDateComponents *componentsForFireNever = [calendar components:(NSYearCalendarUnit | NSWeekCalendarUnit|  NSHourCalendarUnit | NSMinuteCalendarUnit| NSSecondCalendarUnit | NSWeekdayCalendarUnit) fromDate: now];
@@ -48,7 +48,7 @@ NSDateComponents *componentsForFireNever = [calendar components:(NSYearCalendarU
 ```
 # 使用LocalNotificationManagee类统一处理不同类型的通知
 
-##LocalNotificationManage.h
+## LocalNotificationManage.h
 
 ```
 @interface LocalNotificationManage : NSObject
