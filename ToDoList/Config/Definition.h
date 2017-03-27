@@ -16,3 +16,6 @@
 #define ScreenWidth     [UIScreen mainScreen].bounds.size.width
 
 #define DOCUMENTPATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]//文档路径
+
+// 刷新数据源的通知
+#define TReloadDataObserver  @"reloadDataObserver"

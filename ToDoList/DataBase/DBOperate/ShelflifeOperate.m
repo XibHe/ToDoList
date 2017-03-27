@@ -11,7 +11,7 @@
 
 @implementation ShelflifeOperate
 
-//插入数据
+// 插入数据
 + (NSInteger)insertWithShelflife:(ShelflifeModel *)shelflife
 {
     FMDatabase *dataBase = [ToDoListDB open];
@@ -36,7 +36,7 @@
     return (NSInteger)[dataBase lastInsertRowId];
 }
 
-//通过自增ID查询到一条记录
+// 通过自增ID查询到一条记录
 + (ShelflifeModel *)getaShelflifeInfo:(NSInteger)ID
 {
     ShelflifeModel * shelflifeModel;
@@ -59,5 +59,32 @@
     [resultSet close];
     
     return shelflifeModel;
+}
+
+// 查询全部数据
++ (NSMutableArray *)getAllShelflifeInfo
+{
+    NSMutableArray * aShelflifeModelArray = [[NSMutableArray alloc] init];
+    FMDatabase * dataBase = [ToDoListDB open];
+    NSString * sql = @"SELECT * FROM Shelflife order by endDate";
+    FMResultSet * resultSet = [dataBase executeQuery:sql];
+    while ([resultSet next])
+    {
+        ShelflifeModel * shelflifeModel = [[ShelflifeModel alloc] init];
+        shelflifeModel.ID             = [resultSet intForColumn:@"id"];
+        shelflifeModel.productionDate = [resultSet dateForColumn:@"productionDate"];
+        shelflifeModel.quality_sum    = [resultSet intForColumn:@"quality_sum"];
+        shelflifeModel.quality_unit   = [resultSet intForColumn:@"quality_unit"];
+        shelflifeModel.endDate        = [resultSet dateForColumn:@"endDate"];
+        shelflifeModel.tipDate        = [resultSet dateForColumn:@"tipDate"];
+        shelflifeModel.frequency_rate = [resultSet intForColumn:@"frequency_rate"];
+        shelflifeModel.frequency_unit = [resultSet intForColumn:@"frequency_unit"];
+        shelflifeModel.title          = [resultSet stringForColumn:@"title"];
+        shelflifeModel.sequence       = [resultSet stringForColumn:@"sequence"];
+        [aShelflifeModelArray addObject:shelflifeModel];
+    }
+    [resultSet close];
+    return aShelflifeModelArray;
+
 }
 @end

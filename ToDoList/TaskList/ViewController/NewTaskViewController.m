@@ -338,6 +338,8 @@ static NSString *cellIndentify = @"cell";
     // 3.添加非智能保质期的本地推送
     [LocalNotificationManage addLocalNotification:notificationTask];
     
+    // 刷新列表数据的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:TReloadDataObserver object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

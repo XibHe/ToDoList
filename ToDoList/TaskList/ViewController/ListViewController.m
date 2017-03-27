@@ -8,9 +8,17 @@
 
 #import "ListViewController.h"
 #import "NewTaskViewController.h"
+#import "ShelflifeOperate.h"
+#import "ShelflifeModel.h"
+#import "DateFormatOperate.h"
 
-@interface ListViewController ()
-
+static NSString *cellIndentify = @"taskCell";
+@interface ListViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    NSMutableArray *_dataSourceArray;         // 数据源
+    UITableView    *_listTableView;
+    id             _reloadDataObserver;       // 刷新数据源的通知
+}
 @end
 
 @implementation ListViewController
@@ -19,8 +27,25 @@
     [super viewDidLoad];
     
     self.title = @"任务清单";
+    [self initSubViews];
     
-    // 添加按钮
+    _reloadDataObserver = [[NSNotificationCenter defaultCenter] addObserverForName:TReloadDataObserver object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        _dataSourceArray = [ShelflifeOperate getAllShelflifeInfo];
+        [_listTableView reloadData];
+    }];
+}
+
+#pragma mark - 初始化布局
+- (void)initSubViews
+{
+    _dataSourceArray = [ShelflifeOperate getAllShelflifeInfo];
+    _listTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _listTableView.dataSource = self;
+    _listTableView.delegate = self;
+    _listTableView.rowHeight = ScreenWidth * 120 / 375 / 2;
+    [self.view addSubview:_listTableView];
+    
+    // 导航栏右侧添加按钮
     UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [plusButton setBackgroundImage:[UIImage imageNamed:@"icon_add_nav"] forState:UIControlStateNormal];
     plusButton.size = plusButton.currentBackgroundImage.size;
@@ -36,5 +61,28 @@
     [self.navigationController pushViewController:newTaskVC animated:YES];
 }
 
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_dataSourceArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentify];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentify];
+    }
+    ShelflifeModel *shelflifeModel = _dataSourceArray[indexPath.row];
+    cell.textLabel.text = shelflifeModel.title;
+    cell.detailTextLabel.text = [DateFormatOperate fixStringForClientFromDate:shelflifeModel.endDate joinTime:NO];
+    return cell;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:_reloadDataObserver];
+    _reloadDataObserver = nil;
+}
 
 @end

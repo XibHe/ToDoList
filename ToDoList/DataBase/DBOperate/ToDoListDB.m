@@ -39,7 +39,7 @@ static FMDatabase * dataBase;
     }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *userFilePath = [DOCUMENTPATH stringByAppendingPathComponent:DB_FILE_NAME];
+    NSString *userFilePath = [DOCUMENTPATH stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",@"D3DC208EF6F98DD6FA5080AF10CE14F6"]];
     NSString *userSrcPath;
     // 如果不存在用户文件夹，创建文件夹，拷贝数据库。用户文件夹存在，读取文件夹内容。
     BOOL isDirectory = YES;
