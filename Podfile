@@ -6,5 +6,6 @@ pod 'IQKeyboardManager', '~> 4.0.0'
 pod 'SVProgressHUD'
 pod 'DateTools'
 pod 'FMDB'
+pod 'MGSwipeTableCell'
 
 end
