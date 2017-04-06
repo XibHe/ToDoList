@@ -240,7 +240,6 @@ typedef enum
     }
 }
 
-#warning - 暂时不用
 //#pragma mark - 键盘监听
 //-(void)keyboardDidShow:(NSNotification *)notification
 //{

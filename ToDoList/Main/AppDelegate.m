@@ -34,8 +34,12 @@
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     }else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated"
+        //这里是会报警告的代码
         UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+#pragma clang diagnostic pop
     }
     
     //角标清0
@@ -61,8 +65,8 @@
     CLog(@"noti:%@",notification);
     CLog(@"fireDate = %@",notification.fireDate);
     //当应用在前台运行时,弹出的本地通知提示框
-    NSDictionary * information = [[notification userInfo] objectForKey:@"information"];
-    NSString * title = [information objectForKey:@"title"];
+    //NSDictionary * information = [[notification userInfo] objectForKey:@"information"];
+    //NSString * title = [information objectForKey:@"title"];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

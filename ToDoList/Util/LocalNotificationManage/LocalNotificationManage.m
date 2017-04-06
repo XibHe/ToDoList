@@ -51,7 +51,7 @@
     UILocalNotification *myLocalNotification = [[UILocalNotification alloc] init];
     
     //拼接时间/周几
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *now = [NSDate date];
     
     NSString *unitString = [NSString stringWithFormat:@"%ld",(long)aNotificationTaskModel.unit];
@@ -61,7 +61,7 @@
     if (unitString &&[unitString isEqualToString:@"0"]) {
         //永不重复
         
-        NSDateComponents *componentsForFireNever = [calendar components:(NSYearCalendarUnit | NSWeekCalendarUnit|  NSHourCalendarUnit | NSMinuteCalendarUnit| NSSecondCalendarUnit | NSWeekdayCalendarUnit) fromDate: now];
+        NSDateComponents *componentsForFireNever = [calendar components:(NSCalendarUnitYear | NSCalendarUnitWeekOfMonth|  NSCalendarUnitHour | NSCalendarUnitMinute| NSCalendarUnitSecond | NSCalendarUnitWeekday) fromDate: now];
         
         [componentsForFireNever setYear:aNotificationTaskModel.endTime.year];        //年
         [componentsForFireNever setMonth:aNotificationTaskModel.endTime.month];       //返回表示几月
@@ -84,7 +84,7 @@
     }
     else if (unitString &&[unitString isEqualToString:@"1"])
     {
-        NSDateComponents *componentsForFireDate = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit|  NSHourCalendarUnit | NSMinuteCalendarUnit| NSSecondCalendarUnit | NSWeekdayCalendarUnit) fromDate: now];
+        NSDateComponents *componentsForFireDate = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfMonth | NSCalendarUnitDay|  NSCalendarUnitHour | NSCalendarUnitMinute| NSCalendarUnitSecond | NSCalendarUnitWeekday) fromDate: now];
         
         [componentsForFireDate setHour: aNotificationTaskModel.tipTime.hour];
         [componentsForFireDate setMinute:aNotificationTaskModel.tipTime.minute];
@@ -116,12 +116,12 @@
         //每天重复
         myLocalNotification.fireDate = fireDate;
         //myLocalNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:20];
-        myLocalNotification.repeatInterval= NSDayCalendarUnit;
+        myLocalNotification.repeatInterval= NSCalendarUnitDay;
         
     }else if (unitString &&[unitString isEqualToString:@"2"]){
         
         //每周(周几)重复
-        NSDateComponents *componentsForFireDateWeek = [calendar components:(NSYearCalendarUnit | NSWeekCalendarUnit|  NSHourCalendarUnit | NSMinuteCalendarUnit| NSSecondCalendarUnit | NSWeekdayCalendarUnit) fromDate: now];
+        NSDateComponents *componentsForFireDateWeek = [calendar components:(NSCalendarUnitYear | NSCalendarUnitWeekOfMonth|  NSCalendarUnitHour | NSCalendarUnitMinute| NSCalendarUnitSecond | NSCalendarUnitWeekday) fromDate: now];
         [componentsForFireDateWeek setWeekday: [DateRateTransform inputFrequencyWithWeek:aNotificationTaskModel.rate]]; //返回表示周几的Integer
         
         //NSString * suffixString = [[aNotificationTaskModel.tipTime componentsSeparatedByString:@" "] lastObject];
@@ -155,13 +155,13 @@
         }
         
         myLocalNotification.fireDate = tipDate;
-        myLocalNotification.repeatInterval= NSWeekCalendarUnit;
+        myLocalNotification.repeatInterval= NSCalendarUnitWeekOfMonth;
         CLog(@"myLocalNotification.fireDate = %@",myLocalNotification.fireDate);
         
     }else if (unitString &&[unitString isEqualToString:@"3"]){
         
         //每月的几号
-        NSDateComponents *componentsForFireDateMonth = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit| NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit| NSSecondCalendarUnit | NSWeekdayCalendarUnit) fromDate: now];
+        NSDateComponents *componentsForFireDateMonth = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth| NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute| NSCalendarUnitSecond | NSCalendarUnitWeekday) fromDate: now];
         
         [componentsForFireDateMonth setMonth:now.month]; //返回表示几月
         [componentsForFireDateMonth setDay:aNotificationTaskModel.rate + 1]; //返回表示每月几号
@@ -197,7 +197,7 @@
         }
         
         myLocalNotification.fireDate = fireDate;
-        myLocalNotification.repeatInterval= NSMonthCalendarUnit;
+        myLocalNotification.repeatInterval= NSCalendarUnitMonth;
         
         
     }else if (unitString &&[unitString isEqualToString:@"4"]){
