@@ -11,16 +11,14 @@
 #import "ShelflifeOperate.h"
 #import "ShelflifeModel.h"
 #import "DateFormatOperate.h"
-#import "UnderwayTaskCell.h"
 
 static NSString *cellIndentify = @"taskCell";
-@interface ListViewController ()<UITableViewDataSource,UITableViewDelegate,MGSwipeTableCellDelegate>
+@interface ListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *_dataSourceArray;         // 数据源
     UITableView    *_listTableView;
     id             _reloadDataObserver;       // 刷新数据源的通知
 }
-@property (nonatomic, strong) MGSwipeButton *swipeButton;  // 滑动cell显示得右侧按钮
 @end
 
 @implementation ListViewController
@@ -71,37 +69,14 @@ static NSString *cellIndentify = @"taskCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UnderwayTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentify];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentify];
     if (!cell) {
-        cell = [[UnderwayTaskCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentify];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIndentify];
     }
     ShelflifeModel *shelflifeModel = _dataSourceArray[indexPath.row];
     cell.textLabel.text = shelflifeModel.title;
     cell.detailTextLabel.text = [DateFormatOperate fixStringForClientFromDate:shelflifeModel.endDate joinTime:NO];
-    cell.rightButtons = [self createLeftButtons:2 withStar:0];
-    cell.delegate = self;
     return cell;
-}
-
-#pragma mark - 初始化cell的侧滑按钮
--(NSArray *)createLeftButtons:(NSInteger)number withStar:(NSInteger)star
-{
-    NSMutableArray * resultArray = [NSMutableArray array];
-    NSArray *iconArray = @[@"button_delete",@"button_addStar"];
-    for (NSInteger i = 0; i < [iconArray count]; i ++) {
-        _swipeButton.backgroundColor = [UIColor clearColor];
-        _swipeButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:iconArray[i]] backgroundColor:nil insets:UIEdgeInsetsMake(0, 0, 0, -17) callback:^BOOL(MGSwipeTableCell *sender) {
-            return YES;
-        }];
-        [resultArray addObject:self.swipeButton];
-    }
-    return resultArray;
-}
-
-#pragma mark - MGSwipeTableCellDelegate
-- (BOOL)swipeTableCell:(MGSwipeTableCell *)cell tappedButtonAtIndex:(NSInteger)index direction:(MGSwipeDirection)direction fromExpansion:(BOOL)fromExpansion
-{
-    return YES;
 }
 
 - (void)dealloc
