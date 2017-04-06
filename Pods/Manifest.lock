@@ -5,6 +5,7 @@ PODS:
   - FMDB/standard (2.6.2)
   - IQKeyboardManager (4.0.7)
   - Masonry (1.0.2)
+  - MGSwipeTableCell (1.5.6)
   - SVProgressHUD (2.1.1)
 
 DEPENDENCIES:
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - FMDB
   - IQKeyboardManager (~> 4.0.0)
   - Masonry (~> 1.0.2)
+  - MGSwipeTableCell
   - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -19,8 +21,9 @@ SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
   SVProgressHUD: 1127180503b9a308ddf7006f3cc58fc05cc1092d
 
-PODFILE CHECKSUM: 7eef6318edf2dcfae367e16cd0e6afa939db66e8
+PODFILE CHECKSUM: c8f70e53bfa1f0e2f0d6010df8eff6524fbdf0e4
 
 COCOAPODS: 1.1.1
