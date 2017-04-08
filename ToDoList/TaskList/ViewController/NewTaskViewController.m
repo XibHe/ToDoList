@@ -16,7 +16,7 @@
 #import "ShelflifeModel.h"
 #import "ShelflifeOperate.h"
 #import "NotificationTaskModel.h"
-#import "LocalNotificationManage.h"
+#import "CreateLocalNotification.h"
 static NSString *cellIndentify = @"cell";
 
 @interface NewTaskViewController ()<UITableViewDataSource,UITableViewDelegate,PickerViewDelegare,DateUnitChoiceViewDelegate>
@@ -336,7 +336,7 @@ static NSString *cellIndentify = @"cell";
     notificationTask.status = NotificationStatus_Operation;
     
     // 3.添加非智能保质期的本地推送
-    [LocalNotificationManage addLocalNotification:notificationTask];
+    [CreateLocalNotification addLocalNotification:notificationTask];
     
     // 刷新列表数据的通知
     [[NSNotificationCenter defaultCenter] postNotificationName:TReloadDataObserver object:nil];

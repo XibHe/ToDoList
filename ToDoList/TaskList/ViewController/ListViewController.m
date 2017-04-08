@@ -12,6 +12,7 @@
 #import "ShelflifeModel.h"
 #import "DateFormatOperate.h"
 #import "UnderwayTaskCell.h"
+#import "DeleteLocalNotification.h"
 
 static NSString *cellIndentify = @"taskCell";
 @interface ListViewController ()<UITableViewDataSource,UITableViewDelegate,MGSwipeTableCellDelegate>
@@ -101,6 +102,21 @@ static NSString *cellIndentify = @"taskCell";
 #pragma mark - MGSwipeTableCellDelegate
 - (BOOL)swipeTableCell:(MGSwipeTableCell *)cell tappedButtonAtIndex:(NSInteger)index direction:(MGSwipeDirection)direction fromExpansion:(BOOL)fromExpansion
 {
+    NSIndexPath *listTableViewindexPath = [_listTableView indexPathForCell:cell];
+    ShelflifeModel *shelflifeModel = [_dataSourceArray objectAtIndex:listTableViewindexPath.row];
+    // 删除
+    if (direction == MGSwipeDirectionRightToLeft && index == 0) {
+        // 删除保质期表中一条数据
+        [ShelflifeOperate deleteShelflifeInfoWithID:shelflifeModel.ID];
+        // 删除NotificationTask库中的一条数据(暂时忽略此步操作)
+        // 删除对应的本地通知
+        [DeleteLocalNotification deleteNotificationWithShelflife:shelflifeModel.ID];
+        // 删除数据源
+        [_dataSourceArray removeObjectAtIndex:listTableViewindexPath.row];
+        [_listTableView reloadData];
+    } else if (direction == MGSwipeDirectionRightToLeft && index == 1) {
+        // 加星
+    }
     return YES;
 }
 

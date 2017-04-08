@@ -1,18 +1,18 @@
 //
-//  LocalNotificationManage.m
-//  Steward
+//  CreateLocalNotification.m
+//  ToDoList
 //
-//  Created by Peng he on 15/7/28.
-//  Copyright (c) 2015年 ChengpinKuaipai. All rights reserved.
+//  Created by Peng he on 2017/4/8.
+//  Copyright © 2017年 Peng he. All rights reserved.
 //
 
-#import "LocalNotificationManage.h"
+#import "CreateLocalNotification.h"
 #import "DateTools.h"
 #import "DateRateTransform.h"
 #import <objc/runtime.h>
 #import "DateFormatOperate.h"
 
-@implementation LocalNotificationManage
+@implementation CreateLocalNotification
 
 //添加一个本地推送
 + (void)addLocalNotification:(NotificationTaskModel *)aNotificationTaskModel
@@ -56,7 +56,7 @@
     
     NSString *unitString = [NSString stringWithFormat:@"%ld",(long)aNotificationTaskModel.unit];
     CLog(@"频率单位 = %@",unitString);
-   // CLog(@"非智能保质期 触发时间点 H = %ld,M = %ld",(long)[[aNotificationTaskModel.tipTime substringToIndex:2] integerValue],(long)[[aNotificationTaskModel.tipTime substringWithRange:NSMakeRange(3, 2)] integerValue]);
+    // CLog(@"非智能保质期 触发时间点 H = %ld,M = %ld",(long)[[aNotificationTaskModel.tipTime substringToIndex:2] integerValue],(long)[[aNotificationTaskModel.tipTime substringWithRange:NSMakeRange(3, 2)] integerValue]);
     
     if (unitString &&[unitString isEqualToString:@"0"]) {
         //永不重复
@@ -67,7 +67,7 @@
         [componentsForFireNever setMonth:aNotificationTaskModel.endTime.month];       //返回表示几月
         [componentsForFireNever setDay:aNotificationTaskModel.endTime.day];       //返回表示每月几号
         
-       // NSString * suffixString = [[aNotificationTaskModel.tipTime componentsSeparatedByString:@" "] lastObject];
+        // NSString * suffixString = [[aNotificationTaskModel.tipTime componentsSeparatedByString:@" "] lastObject];
         
         [componentsForFireNever setHour: aNotificationTaskModel.tipTime.hour];
         [componentsForFireNever setMinute:aNotificationTaskModel.tipTime.minute];

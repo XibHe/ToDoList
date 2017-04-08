@@ -85,6 +85,15 @@
     }
     [resultSet close];
     return aShelflifeModelArray;
+}
 
+//删除某一id的数据
++ (void)deleteShelflifeInfoWithID:(NSInteger)ID
+{
+    FMDatabase *dataBase = [ToDoListDB open];
+    [dataBase beginTransaction];
+    NSString *sql = @"DELETE FROM Shelflife WHERE id = ?";
+    [dataBase executeUpdate:sql,[NSNumber numberWithInteger:ID]];
+    [dataBase commit];
 }
 @end

@@ -46,6 +46,10 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     [self registerIQKeyBoard];
+    
+    CLog(@"当前所有通知数量 = %ld",[[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
+    CLog(@"当前本地通知列表 = %@",[[UIApplication sharedApplication] scheduledLocalNotifications]);
+    
     return YES;
 }
 

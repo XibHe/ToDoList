@@ -19,4 +19,7 @@
 // 查询全部数据
 + (NSMutableArray *)getAllShelflifeInfo;
 
+//删除某一id的数据
++ (void)deleteShelflifeInfoWithID:(NSInteger)ID;
+
 @end

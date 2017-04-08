@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		35E2AC9A609AA76BA0EA42B3 /* libPods-ToDoList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAD0A7508DDDD4EEF3397E /* libPods-ToDoList.a */; };
-		473FAAC81E7B2C1200EF18B2 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FAAC71E7B2C1200EF18B2 /* UIColor+Hex.m */; };
 		4764D9CD1E968AA80053E844 /* UnderwayTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4764D9CC1E968AA80053E844 /* UnderwayTaskCell.m */; };
+		476716DA1E9931C600BB428A /* CreateLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716D91E9931C600BB428A /* CreateLocalNotification.m */; };
+		476716DE1E9932E400BB428A /* DeleteLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716DD1E9932E400BB428A /* DeleteLocalNotification.m */; };
+		476716E21E99398E00BB428A /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716E11E99398E00BB428A /* UIColor+Hex.m */; };
+		476716E61E9939C000BB428A /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716E51E9939C000BB428A /* UIViewExt.m */; };
+		476716EA1E9939E500BB428A /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716E91E9939E500BB428A /* UIBarButtonItem+Extension.m */; };
 		47B084EB1E7A7208008BB50B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B084EA1E7A7208008BB50B /* main.m */; };
 		47B084F41E7A7208008BB50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47B084F21E7A7208008BB50B /* Main.storyboard */; };
 		47B084F61E7A7208008BB50B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47B084F51E7A7208008BB50B /* Assets.xcassets */; };
@@ -18,8 +22,6 @@
 		47B0850F1E7A7208008BB50B /* ToDoListUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B0850E1E7A7208008BB50B /* ToDoListUITests.m */; };
 		47B085271E7A8C4B008BB50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B085261E7A8C4B008BB50B /* AppDelegate.m */; };
 		47B085311E7A8C88008BB50B /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B085301E7A8C88008BB50B /* NavigationViewController.m */; };
-		47B0853B1E7B0A47008BB50B /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B0853A1E7B0A47008BB50B /* UIBarButtonItem+Extension.m */; };
-		47B0853E1E7B0AB8008BB50B /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B0853D1E7B0AB8008BB50B /* UIViewExt.m */; };
 		47B085491E7B1D56008BB50B /* TimeDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B085481E7B1D56008BB50B /* TimeDateCell.m */; };
 		47E3B9091E7F7E92001B27A4 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E3B9081E7F7E92001B27A4 /* PickerView.m */; };
 		47E3B90E1E7F862F001B27A4 /* DateFormatOperate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E3B90D1E7F862F001B27A4 /* DateFormatOperate.m */; };
@@ -33,7 +35,6 @@
 		47E3B92F1E814976001B27A4 /* ShelflifeOperate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E3B92E1E814976001B27A4 /* ShelflifeOperate.m */; };
 		47E3B9321E8149DE001B27A4 /* ToDoListDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E3B9311E8149DE001B27A4 /* ToDoListDB.m */; };
 		47E3B9351E8157D1001B27A4 /* NotificationTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E3B9341E8157D1001B27A4 /* NotificationTaskModel.m */; };
-		47E3B9391E815B4C001B27A4 /* LocalNotificationManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E3B9381E815B4C001B27A4 /* LocalNotificationManage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +56,18 @@
 
 /* Begin PBXFileReference section */
 		2FD585E95EE85D00513592D3 /* Pods-ToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList.debug.xcconfig"; sourceTree = "<group>"; };
-		473FAAC61E7B2C1200EF18B2 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
-		473FAAC71E7B2C1200EF18B2 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		4764D9CB1E968AA80053E844 /* UnderwayTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderwayTaskCell.h; sourceTree = "<group>"; };
 		4764D9CC1E968AA80053E844 /* UnderwayTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderwayTaskCell.m; sourceTree = "<group>"; };
+		476716D81E9931C600BB428A /* CreateLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLocalNotification.h; sourceTree = "<group>"; };
+		476716D91E9931C600BB428A /* CreateLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLocalNotification.m; sourceTree = "<group>"; };
+		476716DC1E9932E400BB428A /* DeleteLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteLocalNotification.h; sourceTree = "<group>"; };
+		476716DD1E9932E400BB428A /* DeleteLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteLocalNotification.m; sourceTree = "<group>"; };
+		476716E01E99398E00BB428A /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		476716E11E99398E00BB428A /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		476716E41E9939C000BB428A /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		476716E51E9939C000BB428A /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		476716E81E9939E500BB428A /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		476716E91E9939E500BB428A /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		47B084E61E7A7208008BB50B /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B084EA1E7A7208008BB50B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		47B084F31E7A7208008BB50B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,10 +86,6 @@
 		47B085301E7A8C88008BB50B /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		47B085331E7A8CF0008BB50B /* Definition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definition.h; sourceTree = "<group>"; };
 		47B085351E7A9280008BB50B /* ToDoList.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoList.pch; sourceTree = "<group>"; };
-		47B085391E7B0A47008BB50B /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
-		47B0853A1E7B0A47008BB50B /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
-		47B0853C1E7B0AB8008BB50B /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
-		47B0853D1E7B0AB8008BB50B /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		47B085471E7B1D56008BB50B /* TimeDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeDateCell.h; sourceTree = "<group>"; };
 		47B085481E7B1D56008BB50B /* TimeDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeDateCell.m; sourceTree = "<group>"; };
 		47E3B9071E7F7E92001B27A4 /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
@@ -106,8 +111,6 @@
 		47E3B9311E8149DE001B27A4 /* ToDoListDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoListDB.m; sourceTree = "<group>"; };
 		47E3B9331E8157D1001B27A4 /* NotificationTaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTaskModel.h; sourceTree = "<group>"; };
 		47E3B9341E8157D1001B27A4 /* NotificationTaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTaskModel.m; sourceTree = "<group>"; };
-		47E3B9371E815B4C001B27A4 /* LocalNotificationManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNotificationManage.h; sourceTree = "<group>"; };
-		47E3B9381E815B4C001B27A4 /* LocalNotificationManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNotificationManage.m; sourceTree = "<group>"; };
 		BBA19B5DBC6C1C21269EB7A3 /* Pods-ToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList.release.xcconfig"; sourceTree = "<group>"; };
 		DDDAD0A7508DDDD4EEF3397E /* libPods-ToDoList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToDoList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -155,6 +158,63 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		476716D31E9930CC00BB428A /* LocalNotificationManage(通知管理) */ = {
+			isa = PBXGroup;
+			children = (
+				476716DB1E9932BB00BB428A /* DeleteLocalNotification(删除通知) */,
+				476716D41E99315500BB428A /* CreateLocalNotification(创建通知) */,
+			);
+			name = "LocalNotificationManage(通知管理)";
+			path = LocalNotificationManage;
+			sourceTree = "<group>";
+		};
+		476716D41E99315500BB428A /* CreateLocalNotification(创建通知) */ = {
+			isa = PBXGroup;
+			children = (
+				476716D81E9931C600BB428A /* CreateLocalNotification.h */,
+				476716D91E9931C600BB428A /* CreateLocalNotification.m */,
+			);
+			name = "CreateLocalNotification(创建通知)";
+			path = CreateLocalNotification;
+			sourceTree = "<group>";
+		};
+		476716DB1E9932BB00BB428A /* DeleteLocalNotification(删除通知) */ = {
+			isa = PBXGroup;
+			children = (
+				476716DC1E9932E400BB428A /* DeleteLocalNotification.h */,
+				476716DD1E9932E400BB428A /* DeleteLocalNotification.m */,
+			);
+			name = "DeleteLocalNotification(删除通知)";
+			path = DeleteLocalNotification;
+			sourceTree = "<group>";
+		};
+		476716DF1E99398E00BB428A /* GetColor */ = {
+			isa = PBXGroup;
+			children = (
+				476716E01E99398E00BB428A /* UIColor+Hex.h */,
+				476716E11E99398E00BB428A /* UIColor+Hex.m */,
+			);
+			path = GetColor;
+			sourceTree = "<group>";
+		};
+		476716E31E9939C000BB428A /* UIViewExt */ = {
+			isa = PBXGroup;
+			children = (
+				476716E41E9939C000BB428A /* UIViewExt.h */,
+				476716E51E9939C000BB428A /* UIViewExt.m */,
+			);
+			path = UIViewExt;
+			sourceTree = "<group>";
+		};
+		476716E71E9939E500BB428A /* UIBarButtonItem+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				476716E81E9939E500BB428A /* UIBarButtonItem+Extension.h */,
+				476716E91E9939E500BB428A /* UIBarButtonItem+Extension.m */,
+			);
+			path = "UIBarButtonItem+Extension";
+			sourceTree = "<group>";
+		};
 		47B084DD1E7A7208008BB50B = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +240,7 @@
 		47B084E81E7A7208008BB50B /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				476716D31E9930CC00BB428A /* LocalNotificationManage(通知管理) */,
 				47E3B9291E81485A001B27A4 /* DataBase */,
 				47B085451E7B17E8008BB50B /* View */,
 				47B085361E7B08BC008BB50B /* Util */,
@@ -256,16 +317,12 @@
 		47B085361E7B08BC008BB50B /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				47E3B9361E815B31001B27A4 /* LocalNotificationManage */,
+				476716E71E9939E500BB428A /* UIBarButtonItem+Extension */,
+				476716E31E9939C000BB428A /* UIViewExt */,
+				476716DF1E99398E00BB428A /* GetColor */,
 				47E3B90F1E7FAE14001B27A4 /* DateUnitChoiceView */,
 				47E3B90B1E7F85BA001B27A4 /* DateOperation */,
 				47E3B9061E7F7E92001B27A4 /* DatePickerView */,
-				473FAAC61E7B2C1200EF18B2 /* UIColor+Hex.h */,
-				473FAAC71E7B2C1200EF18B2 /* UIColor+Hex.m */,
-				47B0853C1E7B0AB8008BB50B /* UIViewExt.h */,
-				47B0853D1E7B0AB8008BB50B /* UIViewExt.m */,
-				47B085391E7B0A47008BB50B /* UIBarButtonItem+Extension.h */,
-				47B0853A1E7B0A47008BB50B /* UIBarButtonItem+Extension.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -356,15 +413,6 @@
 				47E3B92E1E814976001B27A4 /* ShelflifeOperate.m */,
 			);
 			path = DBOperate;
-			sourceTree = "<group>";
-		};
-		47E3B9361E815B31001B27A4 /* LocalNotificationManage */ = {
-			isa = PBXGroup;
-			children = (
-				47E3B9371E815B4C001B27A4 /* LocalNotificationManage.h */,
-				47E3B9381E815B4C001B27A4 /* LocalNotificationManage.m */,
-			);
-			path = LocalNotificationManage;
 			sourceTree = "<group>";
 		};
 		683D8977AC1D63AED609B456 /* Pods */ = {
@@ -565,21 +613,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47B0853E1E7B0AB8008BB50B /* UIViewExt.m in Sources */,
-				47E3B9391E815B4C001B27A4 /* LocalNotificationManage.m in Sources */,
+				476716DE1E9932E400BB428A /* DeleteLocalNotification.m in Sources */,
 				47E3B9251E811D54001B27A4 /* NewTaskViewController.m in Sources */,
 				47E3B9281E811D9F001B27A4 /* ShelflifeModel.m in Sources */,
-				47B0853B1E7B0A47008BB50B /* UIBarButtonItem+Extension.m in Sources */,
 				47E3B92F1E814976001B27A4 /* ShelflifeOperate.m in Sources */,
+				476716EA1E9939E500BB428A /* UIBarButtonItem+Extension.m in Sources */,
 				47E3B9351E8157D1001B27A4 /* NotificationTaskModel.m in Sources */,
 				47E3B9241E811D54001B27A4 /* ListViewController.m in Sources */,
 				47B085271E7A8C4B008BB50B /* AppDelegate.m in Sources */,
 				47B084EB1E7A7208008BB50B /* main.m in Sources */,
 				4764D9CD1E968AA80053E844 /* UnderwayTaskCell.m in Sources */,
+				476716E61E9939C000BB428A /* UIViewExt.m in Sources */,
 				47E3B9091E7F7E92001B27A4 /* PickerView.m in Sources */,
-				473FAAC81E7B2C1200EF18B2 /* UIColor+Hex.m in Sources */,
 				47B085311E7A8C88008BB50B /* NavigationViewController.m in Sources */,
+				476716DA1E9931C600BB428A /* CreateLocalNotification.m in Sources */,
 				47E3B9151E7FB245001B27A4 /* DateRateTransform.m in Sources */,
+				476716E21E99398E00BB428A /* UIColor+Hex.m in Sources */,
 				47B085491E7B1D56008BB50B /* TimeDateCell.m in Sources */,
 				47E3B90E1E7F862F001B27A4 /* DateFormatOperate.m in Sources */,
 				47E3B9121E7FAE26001B27A4 /* DateUnitChoiceView.m in Sources */,
