@@ -92,7 +92,8 @@ static NSString *cellIndentify = @"taskCell";
     
     ShelflifeModel *shelflifeModel = [_dataSourceArray objectAtIndex:indexPath.row];
     NewTaskViewController *newTaskVC = [[NewTaskViewController alloc] init];
-    newTaskVC.dataSource = [ShelflifeSourceDataTransform fixDataFromShelflifeModel:shelflifeModel];
+    newTaskVC.dataSourceArray = [ShelflifeSourceDataTransform fixDataFromShelflifeModel:shelflifeModel];
+    newTaskVC.shelflifeModel = shelflifeModel;
     newTaskVC.isEditTask = YES;
     [self.navigationController pushViewController:newTaskVC animated:YES];
 }

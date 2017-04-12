@@ -9,6 +9,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShelflifeModel.h"
+
 typedef enum
 {
     DateType_Production    = 1,      // 生产日期
@@ -21,5 +23,7 @@ typedef enum
 
 @property (nonatomic, assign) DateType dateType;              // 时间日期类型
 @property (nonatomic, assign) BOOL isEditTask;                // 编辑任务
-@property (nonatomic, strong) NSMutableArray *dataSource;     // 输入内容数据源
+@property (nonatomic, strong) NSMutableArray *dataSourceArray;     // 输入内容数据源
+@property (nonatomic, strong) ShelflifeModel *shelflifeModel;      // 编辑时使用的shelflifeModel
+
 @end

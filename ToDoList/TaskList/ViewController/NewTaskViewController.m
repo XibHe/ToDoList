@@ -13,7 +13,6 @@
 #import "DateUnitChoiceView.h"
 #import "DateRateTransform.h"
 #import "UIBarButtonItem+Extension.h"
-#import "ShelflifeModel.h"
 #import "ShelflifeOperate.h"
 #import "NotificationTaskModel.h"
 #import "CreateLocalNotification.h"
@@ -46,9 +45,7 @@ static NSString *cellIndentify = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    self.title = @"添加提醒任务";
+    // Do any additional setup after loading the view
     self.view.backgroundColor = [UIColor whiteColor];
     [self initSubViews];
 }
@@ -56,10 +53,18 @@ static NSString *cellIndentify = @"cell";
 - (void)initSubViews
 {
     _titleSource = @[@[@"生产日期",@"保质期天数"],@[@"到期日",@"时间",@"提醒频次"]];
-    _dateMutArray = [NSMutableArray arrayWithObjects:@"选择日期",@"选择天数",nil];
-    _timeMutarray  = [NSMutableArray arrayWithObjects:@"选择日期",@"选择时间",@"选择频次",nil];
-    _dataSource = [NSMutableArray arrayWithObjects:_dateMutArray,_timeMutarray,nil];
-
+    
+    if (_isEditTask) {
+        self.title = @"编辑提醒任务";
+        _dateMutArray = _dataSourceArray[0];
+        _timeMutarray  = _dataSourceArray[1];
+    } else {
+        self.title = @"添加提醒任务";
+        _dateMutArray = [NSMutableArray arrayWithObjects:@"选择日期",@"选择天数",nil];
+        _timeMutarray  = [NSMutableArray arrayWithObjects:@"选择日期",@"选择时间",@"选择频次",nil];
+    }
+    _dataSourceArray = [NSMutableArray arrayWithObjects:_dateMutArray,_timeMutarray,nil];
+    
     _listTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _listTableView.dataSource = self;
     _listTableView.delegate = self;
@@ -71,6 +76,9 @@ static NSString *cellIndentify = @"cell";
     _titleField.placeholder = @"请输入提醒任务名称";
     _titleField.backgroundColor = [UIColor lightGrayColor];
     _listTableView.tableHeaderView = _titleField;
+    if (_isEditTask) {
+        _titleField.text = _shelflifeModel.title;
+    }
     
     // 确定按钮
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(makeSureClick) title:@"确定"];
@@ -95,7 +103,7 @@ static NSString *cellIndentify = @"cell";
         cell = [[TimeDateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentify];
     }
     cell.titleLabel.text = _titleSource[indexPath.section][indexPath.row];
-    cell.remindLabel.text = _dataSource[indexPath.section][indexPath.row];
+    cell.remindLabel.text = _dataSourceArray[indexPath.section][indexPath.row];
     
     return cell;
 }
