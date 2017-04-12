@@ -10,7 +10,7 @@
 
 @implementation DateRateTransform
 
-//本地通知频率
+// 本地通知频率
 + (NSInteger)inputFrequencyWithWeek:(NSInteger)frequencyRate
 {
     //"0" - "6" 分别表示周一到周日   for fixing (周五(-1),周六(0),周日(1))
@@ -31,7 +31,7 @@
     }
 }
 
-//频率单位 + 频度
+// 频率单位 + 频度
 + (NSString *)outputFrequencyUnitString:(NSInteger)frequencyUnit frequencyRate:(NSInteger)frequencyRate
 {
     
@@ -72,6 +72,7 @@
     }
 }
 
+// 保质期天数
 + (NSString *)outPutExprateDaysUnitString:(NSInteger)daysUnit exprateDaysSum:(NSInteger)daysSum
 {
    

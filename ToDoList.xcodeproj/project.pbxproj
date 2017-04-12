@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35E2AC9A609AA76BA0EA42B3 /* libPods-ToDoList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAD0A7508DDDD4EEF3397E /* libPods-ToDoList.a */; };
+		474850A31E9E4883003C31EC /* ShelflifeSourceDataTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 474850A21E9E4883003C31EC /* ShelflifeSourceDataTransform.m */; };
 		4764D9CD1E968AA80053E844 /* UnderwayTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4764D9CC1E968AA80053E844 /* UnderwayTaskCell.m */; };
 		476716DA1E9931C600BB428A /* CreateLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716D91E9931C600BB428A /* CreateLocalNotification.m */; };
 		476716DE1E9932E400BB428A /* DeleteLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716DD1E9932E400BB428A /* DeleteLocalNotification.m */; };
@@ -56,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		2FD585E95EE85D00513592D3 /* Pods-ToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList.debug.xcconfig"; sourceTree = "<group>"; };
+		474850A11E9E4883003C31EC /* ShelflifeSourceDataTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShelflifeSourceDataTransform.h; sourceTree = "<group>"; };
+		474850A21E9E4883003C31EC /* ShelflifeSourceDataTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShelflifeSourceDataTransform.m; sourceTree = "<group>"; };
 		4764D9CB1E968AA80053E844 /* UnderwayTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderwayTaskCell.h; sourceTree = "<group>"; };
 		4764D9CC1E968AA80053E844 /* UnderwayTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderwayTaskCell.m; sourceTree = "<group>"; };
 		476716D81E9931C600BB428A /* CreateLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLocalNotification.h; sourceTree = "<group>"; };
@@ -147,6 +150,15 @@
 				DDDAD0A7508DDDD4EEF3397E /* libPods-ToDoList.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		474850A01E9E4883003C31EC /* ShelflifeSourceDataTransform */ = {
+			isa = PBXGroup;
+			children = (
+				474850A11E9E4883003C31EC /* ShelflifeSourceDataTransform.h */,
+				474850A21E9E4883003C31EC /* ShelflifeSourceDataTransform.m */,
+			);
+			path = ShelflifeSourceDataTransform;
 			sourceTree = "<group>";
 		};
 		4764D9CA1E9688740053E844 /* View */ = {
@@ -317,6 +329,7 @@
 		47B085361E7B08BC008BB50B /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				474850A01E9E4883003C31EC /* ShelflifeSourceDataTransform */,
 				476716E71E9939E500BB428A /* UIBarButtonItem+Extension */,
 				476716E31E9939C000BB428A /* UIViewExt */,
 				476716DF1E99398E00BB428A /* GetColor */,
@@ -617,6 +630,7 @@
 				47E3B9251E811D54001B27A4 /* NewTaskViewController.m in Sources */,
 				47E3B9281E811D9F001B27A4 /* ShelflifeModel.m in Sources */,
 				47E3B92F1E814976001B27A4 /* ShelflifeOperate.m in Sources */,
+				474850A31E9E4883003C31EC /* ShelflifeSourceDataTransform.m in Sources */,
 				476716EA1E9939E500BB428A /* UIBarButtonItem+Extension.m in Sources */,
 				47E3B9351E8157D1001B27A4 /* NotificationTaskModel.m in Sources */,
 				47E3B9241E811D54001B27A4 /* ListViewController.m in Sources */,

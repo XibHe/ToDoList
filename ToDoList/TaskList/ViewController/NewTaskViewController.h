@@ -2,7 +2,7 @@
 //  NewTaskViewController.h
 //  ToDoList
 //
-//  新增提醒
+//  新增/编辑提醒任务
 //
 //  Created by Peng he on 2017/3/16.
 //  Copyright © 2017年 Peng he. All rights reserved.
@@ -19,6 +19,7 @@ typedef enum
 }DateType;
 @interface NewTaskViewController : UIViewController
 
-@property (nonatomic, assign) DateType dateType;             // 时间日期类型
-
+@property (nonatomic, assign) DateType dateType;              // 时间日期类型
+@property (nonatomic, assign) BOOL isEditTask;                // 编辑任务
+@property (nonatomic, strong) NSMutableArray *dataSource;     // 输入内容数据源
 @end

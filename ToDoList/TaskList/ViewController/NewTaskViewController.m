@@ -24,7 +24,6 @@ static NSString *cellIndentify = @"cell";
     NSArray        *_titleSource;    // title数组
     NSMutableArray *_dateMutArray;   // 保质期限数据源
     NSMutableArray *_timeMutarray;   // 提醒设置数据源
-    NSMutableArray *_dataSource;     // 全部数据源
     
     UITextField    *_titleField;    //  提醒任务名称
     

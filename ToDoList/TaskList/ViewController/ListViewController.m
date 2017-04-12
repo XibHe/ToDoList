@@ -13,6 +13,7 @@
 #import "DateFormatOperate.h"
 #import "UnderwayTaskCell.h"
 #import "DeleteLocalNotification.h"
+#import "ShelflifeSourceDataTransform.h"
 
 static NSString *cellIndentify = @"taskCell";
 @interface ListViewController ()<UITableViewDataSource,UITableViewDelegate,MGSwipeTableCellDelegate>
@@ -84,6 +85,18 @@ static NSString *cellIndentify = @"taskCell";
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ShelflifeModel *shelflifeModel = [_dataSourceArray objectAtIndex:indexPath.row];
+    NewTaskViewController *newTaskVC = [[NewTaskViewController alloc] init];
+    newTaskVC.dataSource = [ShelflifeSourceDataTransform fixDataFromShelflifeModel:shelflifeModel];
+    newTaskVC.isEditTask = YES;
+    [self.navigationController pushViewController:newTaskVC animated:YES];
+}
+
 #pragma mark - 初始化cell的侧滑按钮
 -(NSArray *)createLeftButtons:(NSInteger)number withStar:(NSInteger)star
 {
@@ -115,7 +128,7 @@ static NSString *cellIndentify = @"taskCell";
         [_dataSourceArray removeObjectAtIndex:listTableViewindexPath.row];
         [_listTableView reloadData];
     } else if (direction == MGSwipeDirectionRightToLeft && index == 1) {
-        // 加星
+    // 加星
     }
     return YES;
 }

@@ -12,11 +12,19 @@
 
 @interface DateRateTransform : NSObject
 
-//本地通知频率
+/***
+ 本地通知频率
+ ***/
 + (NSInteger)inputFrequencyWithWeek:(NSInteger)frequencyRate;
-//频率单位 + 频度
+
+/***
+ 频率单位 + 频度
+ ***/
 + (NSString *)outputFrequencyUnitString:(NSInteger)frequencyUnit frequencyRate:(NSInteger)frequencyRate;
 
+/***
+ 保质期天数
+ ***/
 + (NSString *)outPutExprateDaysUnitString:(NSInteger)daysUnit exprateDaysSum:(NSInteger)daysSum;
 
 @end
