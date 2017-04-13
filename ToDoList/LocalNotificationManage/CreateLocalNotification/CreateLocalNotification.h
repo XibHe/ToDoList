@@ -12,9 +12,7 @@
 
 @interface CreateLocalNotification : NSObject
 
-//添加非智能本地推送
+// 添加非智能本地推送
 + (void)addLocalNotification:(NotificationTaskModel *)aNotificationTaskModel;
 
-//添加非智能保质期的本地推送
-+ (void)configureShelflifeLoacalNotification:(NotificationTaskModel *)aNotificationTaskModel withNotificationKey:(NSString *)key;
 @end

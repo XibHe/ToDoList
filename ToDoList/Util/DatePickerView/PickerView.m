@@ -281,12 +281,10 @@
         if (component == 1){
             
         }
-        self.dateUnitString = [NSString stringWithFormat:@"%ld",(long)[_pickerView selectedRowInComponent:0] ];
-        self.dateRateString = [NSString stringWithFormat:@"%ld",(long)[_pickerView selectedRowInComponent:1] ];
-        
-        CLog(@"频率选择器控件 = %@,%@",self.dateUnitString,self.dateRateString);
+        self.dateUnit = [_pickerView selectedRowInComponent:0];
+        self.dateRate = [_pickerView selectedRowInComponent:1];
+        CLog(@"频率选择器控件 = %ld,%ld",(long)self.dateUnit,(long)self.dateRate);
     }
-    
 }
 
 #pragma mark datePickerView 值改变回调方法

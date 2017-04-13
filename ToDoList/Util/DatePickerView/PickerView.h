@@ -39,8 +39,8 @@ typedef enum
 @property (nonatomic, strong) NSDictionary *frequencyDictionary;
 @property (nonatomic ,strong) NSArray *frequencyArray;
 @property (nonatomic ,strong) NSArray *rangeArray;
-@property (nonatomic, copy) NSString *dateUnitString;
-@property (nonatomic, copy) NSString *dateRateString;
+@property (nonatomic, assign) NSInteger dateUnit;
+@property (nonatomic, assign) NSInteger dateRate;
 
 //判断是否日期是否已经选择
 @property (nonatomic, assign) BOOL isCheckDate;

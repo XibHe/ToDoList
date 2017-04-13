@@ -16,6 +16,9 @@
 // 通过自增ID查询到一条记录
 + (ShelflifeModel *)getaShelflifeInfo:(NSInteger)ID;
 
+// 更新数据
++ (void)updateWithShelflife:(ShelflifeModel *)shelflife;
+
 // 查询全部数据
 + (NSMutableArray *)getAllShelflifeInfo;
 

@@ -16,6 +16,7 @@
 #import "ShelflifeOperate.h"
 #import "NotificationTaskModel.h"
 #import "CreateLocalNotification.h"
+#import "EditLocalNotification.h"
 static NSString *cellIndentify = @"cell";
 
 @interface NewTaskViewController ()<UITableViewDataSource,UITableViewDelegate,PickerViewDelegare,DateUnitChoiceViewDelegate>
@@ -23,20 +24,7 @@ static NSString *cellIndentify = @"cell";
     NSArray        *_titleSource;    // title数组
     NSMutableArray *_dateMutArray;   // 保质期限数据源
     NSMutableArray *_timeMutarray;   // 提醒设置数据源
-    
     UITextField    *_titleField;    //  提醒任务名称
-    
-    NSInteger      _dateSum;        //保质期天数
-    NSInteger      _dateUnit;      //保质期天数单位(日，月，年)
-    
-    //记录生产日期,到期日,触发时间
-    NSDate         *_productDate;
-    NSDate         *_endRemindDate;
-    NSDate         *_tipDate;
-    
-    //时间,频率单位
-    NSString       *_remindUnit;
-    NSString       *_remindRate;
 }
 @property (nonatomic, strong) UITableView *listTableView;
 @end
@@ -60,6 +48,7 @@ static NSString *cellIndentify = @"cell";
         _timeMutarray  = _dataSourceArray[1];
     } else {
         self.title = @"添加提醒任务";
+        _shelflifeModel = [[ShelflifeModel alloc] init];
         _dateMutArray = [NSMutableArray arrayWithObjects:@"选择日期",@"选择天数",nil];
         _timeMutarray  = [NSMutableArray arrayWithObjects:@"选择日期",@"选择时间",@"选择频次",nil];
     }
@@ -151,9 +140,9 @@ static NSString *cellIndentify = @"cell";
             datePickerView.delegate = self;
             datePickerView.pickerMode = UIDatePickerModeDate;
             datePickerView.pickerType = PickerType_pruductDate;
-            if (_productDate) {
+            if (_shelflifeModel.productionDate) {
                 datePickerView.isCheckDate = YES;
-                datePickerView.CheckDate = _productDate;
+                datePickerView.CheckDate = _shelflifeModel.productionDate;
             } else {
                 datePickerView.isCheckDate = NO;
             }
@@ -163,8 +152,8 @@ static NSString *cellIndentify = @"cell";
             // 保质期天数
             DateUnitChoiceView * dateUnitChoiceView = [DateUnitChoiceView dateUnitChoiceView];
             dateUnitChoiceView.delegate = self;
-            dateUnitChoiceView.inputInteger = _dateSum;
-            dateUnitChoiceView.unitInteger = _dateUnit;
+            dateUnitChoiceView.inputInteger = _shelflifeModel.quality_sum;
+            dateUnitChoiceView.unitInteger = _shelflifeModel.quality_unit;
             [dateUnitChoiceView show];
         }
     } else if (indexPath.section == 1) {
@@ -179,9 +168,9 @@ static NSString *cellIndentify = @"cell";
             datePickerView.pickerMode = UIDatePickerModeDate;
             datePickerView.pickerType = PickerType_endDate;
             datePickerView.maxDate = [self exprateDate];
-            if (_endRemindDate) {
+            if (_shelflifeModel.endDate) {
                 datePickerView.isCheckDate = YES;
-                datePickerView.CheckDate = _endRemindDate;
+                datePickerView.CheckDate = _shelflifeModel.endDate;
             } else {
                 datePickerView.isCheckDate = NO;
             }
@@ -191,9 +180,9 @@ static NSString *cellIndentify = @"cell";
             // 到期提醒时间
             self.dateType = DateType_RemindTime;
             datePickerView.pickerMode = UIDatePickerModeTime;
-            if (_tipDate) {
+            if (_shelflifeModel.tipDate) {
                 datePickerView.isCheckDate = YES;
-                datePickerView.CheckDate = _tipDate;
+                datePickerView.CheckDate = _shelflifeModel.tipDate;
             } else {
                 datePickerView.isCheckDate = NO;
             }
@@ -218,7 +207,7 @@ static NSString *cellIndentify = @"cell";
             CLog(@"pickerView返回的生产日期 = %@",myPickerView.pickerDate);
             NSString *productDate = [DateFormatOperate fixStringForClientFromDate:myPickerView.pickerDate joinTime:NO];
             [_dateMutArray replaceObjectAtIndex:0 withObject:productDate];
-            _productDate = myPickerView.pickerDate;
+            _shelflifeModel.productionDate = myPickerView.pickerDate;
             [self reloadSectionIndexpath:0 section:0];
         }
             break;
@@ -227,7 +216,7 @@ static NSString *cellIndentify = @"cell";
             CLog(@"pickerView返回的到期日 = %@",myPickerView.pickerDate);
             NSString *endRemindDate = [DateFormatOperate fixStringForClientFromDate:myPickerView.pickerDate joinTime:NO];
             [_timeMutarray replaceObjectAtIndex:0 withObject:endRemindDate];
-            _endRemindDate = myPickerView.pickerDate;
+            _shelflifeModel.endDate = myPickerView.pickerDate;
             [self reloadSectionIndexpath:0 section:1];
         }
             break;
@@ -236,19 +225,15 @@ static NSString *cellIndentify = @"cell";
             CLog(@"pickerView返回的提醒时间 = %@",myPickerView.pickerDate);
             NSString *tipTime = [[[DateFormatOperate fixStringForClientFromDate:myPickerView.pickerDate joinTime:YES] componentsSeparatedByString:@" "] lastObject];
             [_timeMutarray replaceObjectAtIndex:1 withObject:tipTime];
-            _tipDate = myPickerView.pickerDate;
+            _shelflifeModel.tipDate = myPickerView.pickerDate;
             [self reloadSectionIndexpath:1 section:1];
         }
             break;
         case DateType_Frequency:
         {
-            if ([myPickerView.dateUnitString isEqualToString:@""]) {
-                _remindUnit = @"0";
-            } else{
-                _remindUnit = myPickerView.dateUnitString;
-            }
-            _remindRate = myPickerView.dateRateString;
-            NSString *frequency = [DateRateTransform outputFrequencyUnitString:[_remindUnit integerValue] frequencyRate:[_remindRate integerValue]];
+            _shelflifeModel.frequency_unit = myPickerView.dateUnit;
+            _shelflifeModel.frequency_rate = myPickerView.dateRate;
+            NSString *frequency = [DateRateTransform outputFrequencyUnitString:_shelflifeModel.frequency_unit frequencyRate:_shelflifeModel.frequency_rate];
             [_timeMutarray replaceObjectAtIndex:2 withObject:frequency];
             [self reloadSectionIndexpath:2 section:1];
         }
@@ -261,9 +246,9 @@ static NSString *cellIndentify = @"cell";
 #pragma mark - DateUnitChoiceViewDelegate
 - (void)dateUnitChoiceView:(DateUnitChoiceView *)dateUnitChoiceView selectedDateSum:(NSInteger)dateSum dateUnit:(SelectedDateUnit)dateUnit
 {
-    _dateSum = dateSum;
-    _dateUnit = dateUnit;
-    NSString *days = [DateRateTransform outPutExprateDaysUnitString:_dateUnit exprateDaysSum:_dateSum];
+    _shelflifeModel.quality_sum = dateSum;
+    _shelflifeModel.quality_unit = dateUnit;
+    NSString *days = [DateRateTransform outPutExprateDaysUnitString:_shelflifeModel.quality_unit exprateDaysSum:_shelflifeModel.quality_sum];
     [_dateMutArray replaceObjectAtIndex:1 withObject:days];
     [self reloadSectionIndexpath:1 section:0];
 }
@@ -272,21 +257,21 @@ static NSString *cellIndentify = @"cell";
 - (NSDate *)exprateDate
 {
     NSDate * maxDate;
-    switch (_dateUnit)
+    switch (_shelflifeModel.quality_unit)
     {
         case SelectedDateUnit_Day:
         {
-            maxDate = [_productDate dateByAddingDays:_dateSum];
+            maxDate = [_shelflifeModel.productionDate dateByAddingDays:_shelflifeModel.quality_sum];
         }
             break;
         case SelectedDateUnit_Mouth:
         {
-            maxDate = [_productDate dateByAddingMonths:_dateSum];
+            maxDate = [_shelflifeModel.productionDate dateByAddingMonths:_shelflifeModel.quality_sum];
         }
             break;
         case SelectedDateUnit_Year:
         {
-            maxDate = [_productDate dateByAddingYears:_dateSum];
+            maxDate = [_shelflifeModel.productionDate dateByAddingYears:_shelflifeModel.quality_sum];
         }
             break;
         default:
@@ -309,41 +294,42 @@ static NSString *cellIndentify = @"cell";
         [SVProgressHUD showErrorWithStatus:@"提醒任务名称不能为空!"];
         return;
     }
-    
-    // 新增提醒任务model
-    ShelflifeModel *shelflifeModel = [[ShelflifeModel alloc] init];
-    shelflifeModel.title = _titleField.text;
-    shelflifeModel.productionDate = _productDate;
-    shelflifeModel.quality_sum = _dateSum;
-    shelflifeModel.quality_unit = _dateUnit;
-    shelflifeModel.endDate = _endRemindDate;
-    shelflifeModel.tipDate = _tipDate;
+    // 新增/编辑提醒任务model
+    _shelflifeModel.title = _titleField.text;
     // 提醒频率默认为0(永不)
-    if (_remindUnit) {
-        shelflifeModel.frequency_unit = [_remindUnit integerValue];
+    if (_shelflifeModel.frequency_unit) {
     } else {
-        shelflifeModel.frequency_unit = 0;
+        _shelflifeModel.frequency_unit = 0;
+        _shelflifeModel.frequency_rate = 0;
     }
-    shelflifeModel.frequency_rate = [_remindRate integerValue];
-    
-    // 1.插入保质期表
-    shelflifeModel.ID = [ShelflifeOperate insertWithShelflife:shelflifeModel];
-    CLog(@"新建提醒任务ID = %ld",(long)shelflifeModel.ID);
-    
+    if (_isEditTask) {
+        // 1.更新保质期表(编辑)
+        [ShelflifeOperate  updateWithShelflife:_shelflifeModel];
+    } else {
+        // 1.插入保质期表(新增)
+        _shelflifeModel.ID = [ShelflifeOperate insertWithShelflife:_shelflifeModel];
+        CLog(@"新建提醒任务ID = %ld",(long)_shelflifeModel.ID);
+    }
+
     // 2.插入到通知任务表(暂时忽略此步操作)
     NotificationTaskModel *notificationTask = [[NotificationTaskModel alloc] init];
-    notificationTask.title = shelflifeModel.title;
-    notificationTask.typeId = shelflifeModel.ID;
-    notificationTask.content = [NSString stringWithFormat:@"保质期任务%@快到期了!",shelflifeModel.title];
-    notificationTask.startTime = shelflifeModel.productionDate;
-    notificationTask.endTime = shelflifeModel.endDate;
-    notificationTask.tipTime = shelflifeModel.tipDate;
-    notificationTask.unit = shelflifeModel.frequency_unit;
-    notificationTask.rate = shelflifeModel.frequency_rate;
+    notificationTask.title = _shelflifeModel.title;
+    notificationTask.typeId = _shelflifeModel.ID;
+    notificationTask.content = [NSString stringWithFormat:@"保质期任务%@快到期了!",_shelflifeModel.title];
+    notificationTask.startTime = _shelflifeModel.productionDate;
+    notificationTask.endTime = _shelflifeModel.endDate;
+    notificationTask.tipTime = _shelflifeModel.tipDate;
+    notificationTask.unit = _shelflifeModel.frequency_unit;
+    notificationTask.rate = _shelflifeModel.frequency_rate;
     notificationTask.status = NotificationStatus_Operation;
     
-    // 3.添加非智能保质期的本地推送
-    [CreateLocalNotification addLocalNotification:notificationTask];
+    if (_isEditTask) {
+        // 3.编辑非智能保质期的本地推送
+        [EditLocalNotification updateNotificationTaskWithShelflife:notificationTask];
+    } else {
+        // 3.添加非智能保质期的本地推送
+        [CreateLocalNotification addLocalNotification:notificationTask];
+    }
     
     // 刷新列表数据的通知
     [[NSNotificationCenter defaultCenter] postNotificationName:TReloadDataObserver object:nil];

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35E2AC9A609AA76BA0EA42B3 /* libPods-ToDoList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAD0A7508DDDD4EEF3397E /* libPods-ToDoList.a */; };
 		474850A31E9E4883003C31EC /* ShelflifeSourceDataTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 474850A21E9E4883003C31EC /* ShelflifeSourceDataTransform.m */; };
+		474850A71E9F03FA003C31EC /* EditLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 474850A61E9F03FA003C31EC /* EditLocalNotification.m */; };
 		4764D9CD1E968AA80053E844 /* UnderwayTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4764D9CC1E968AA80053E844 /* UnderwayTaskCell.m */; };
 		476716DA1E9931C600BB428A /* CreateLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716D91E9931C600BB428A /* CreateLocalNotification.m */; };
 		476716DE1E9932E400BB428A /* DeleteLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 476716DD1E9932E400BB428A /* DeleteLocalNotification.m */; };
@@ -59,6 +60,8 @@
 		2FD585E95EE85D00513592D3 /* Pods-ToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList.debug.xcconfig"; sourceTree = "<group>"; };
 		474850A11E9E4883003C31EC /* ShelflifeSourceDataTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShelflifeSourceDataTransform.h; sourceTree = "<group>"; };
 		474850A21E9E4883003C31EC /* ShelflifeSourceDataTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShelflifeSourceDataTransform.m; sourceTree = "<group>"; };
+		474850A51E9F03FA003C31EC /* EditLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLocalNotification.h; sourceTree = "<group>"; };
+		474850A61E9F03FA003C31EC /* EditLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLocalNotification.m; sourceTree = "<group>"; };
 		4764D9CB1E968AA80053E844 /* UnderwayTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderwayTaskCell.h; sourceTree = "<group>"; };
 		4764D9CC1E968AA80053E844 /* UnderwayTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderwayTaskCell.m; sourceTree = "<group>"; };
 		476716D81E9931C600BB428A /* CreateLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLocalNotification.h; sourceTree = "<group>"; };
@@ -161,6 +164,16 @@
 			path = ShelflifeSourceDataTransform;
 			sourceTree = "<group>";
 		};
+		474850A41E9F03C9003C31EC /* EditLocalNotification(编辑通知) */ = {
+			isa = PBXGroup;
+			children = (
+				474850A51E9F03FA003C31EC /* EditLocalNotification.h */,
+				474850A61E9F03FA003C31EC /* EditLocalNotification.m */,
+			);
+			name = "EditLocalNotification(编辑通知)";
+			path = EditLocalNotification;
+			sourceTree = "<group>";
+		};
 		4764D9CA1E9688740053E844 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +186,7 @@
 		476716D31E9930CC00BB428A /* LocalNotificationManage(通知管理) */ = {
 			isa = PBXGroup;
 			children = (
+				474850A41E9F03C9003C31EC /* EditLocalNotification(编辑通知) */,
 				476716DB1E9932BB00BB428A /* DeleteLocalNotification(删除通知) */,
 				476716D41E99315500BB428A /* CreateLocalNotification(创建通知) */,
 			);
@@ -507,7 +521,7 @@
 				TargetAttributes = {
 					47B084E51E7A7208008BB50B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5LSCW5LV66;
+						DevelopmentTeam = CLCRR8SVM6;
 						ProvisioningStyle = Automatic;
 					};
 					47B084FE1E7A7208008BB50B = {
@@ -626,6 +640,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				474850A71E9F03FA003C31EC /* EditLocalNotification.m in Sources */,
 				476716DE1E9932E400BB428A /* DeleteLocalNotification.m in Sources */,
 				47E3B9251E811D54001B27A4 /* NewTaskViewController.m in Sources */,
 				47E3B9281E811D9F001B27A4 /* ShelflifeModel.m in Sources */,
@@ -795,7 +810,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5LSCW5LV66;
+				DEVELOPMENT_TEAM = CLCRR8SVM6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ToDoList/ToDoList.pch";
 				INFOPLIST_FILE = ToDoList/Info.plist;
@@ -812,7 +827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5LSCW5LV66;
+				DEVELOPMENT_TEAM = CLCRR8SVM6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ToDoList/ToDoList.pch";
 				INFOPLIST_FILE = ToDoList/Info.plist;

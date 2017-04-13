@@ -16,8 +16,6 @@
 @end
 
 @implementation AppDelegate
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -25,7 +23,6 @@
     NavigationViewController *rootNavigation = [[NavigationViewController alloc] initWithRootViewController:[[ListViewController alloc] init]];
     self.window.rootViewController = rootNavigation;
     [self.window makeKeyAndVisible];
-    
     
     // iOS8 下需要使用新的 API
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
@@ -41,15 +38,17 @@
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
 #pragma clang diagnostic pop
     }
-    
     //角标清0
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    
     [self registerIQKeyBoard];
     
+    // delete all local notifications when an application is deleted from an iPhone
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"is_first_time"]) {
+        [application cancelAllLocalNotifications]; // Restart the Local Notifications list
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"is_first_time"];
+    }
     CLog(@"当前所有通知数量 = %ld",[[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
     CLog(@"当前本地通知列表 = %@",[[UIApplication sharedApplication] scheduledLocalNotifications]);
-    
     return YES;
 }
 

@@ -61,6 +61,26 @@
     return shelflifeModel;
 }
 
+// 更新数据
++ (void)updateWithShelflife:(ShelflifeModel *)shelflife
+{
+    FMDatabase * dataBase = [ToDoListDB open];
+    [dataBase beginTransaction];
+    NSString *sql = @"UPDATE Shelflife SET sequence = ?, title = ?, productionDate = ?, quality_sum = ?, quality_unit = ?, endDate = ?, tipDate = ?, frequency_unit = ?, frequency_rate = ? WHERE id = ?";
+    [dataBase executeUpdate:sql,
+     shelflife.sequence,
+     shelflife.title,
+     shelflife.productionDate,
+     [NSNumber numberWithInteger:shelflife.quality_sum],
+     [NSNumber numberWithInteger:shelflife.quality_unit],
+     shelflife.endDate,
+     shelflife.tipDate,
+     [NSNumber numberWithInteger:shelflife.frequency_unit],
+     [NSNumber numberWithInteger:shelflife.frequency_rate],
+     [NSNumber numberWithInteger:shelflife.ID]];
+    [dataBase commit];
+}
+
 // 查询全部数据
 + (NSMutableArray *)getAllShelflifeInfo
 {
